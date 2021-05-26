@@ -3,6 +3,7 @@ import json
 import base64
 import sqlite3
 import win32crypt
+import pandas as pd
 from Crypto.Cipher import AES
 import shutil
 from pyfiglet import Figlet
@@ -74,6 +75,10 @@ def main():
     # `logins` table has the data we need
     cursor.execute(
         "select origin_url, action_url, username_value, password_value, date_created, date_last_used from logins order by date_created")
+    ou = []
+    au = []
+    un = []
+    ps = []
     for row in cursor.fetchall():
         origin_url = row[0]
         action_url = row[1]
@@ -86,6 +91,10 @@ def main():
             print(f"Action URL: {action_url}")
             print(f"Username: {username}")
             print(f"Password: {password}")
+            ou.append(origin_url)
+            au.append(action_url)
+            un.append(username)
+            ps.append(password)
         else:
             continue
         if date_created != 86400000000 and date_created:
@@ -101,7 +110,10 @@ def main():
         os.remove(filename)
     except:
         pass
-
+    data = {'Origin URL': ou, 'Action URL': au, 'Username': un, 'Password': ps}
+    df = pd.DataFrame(data)
+    df.to_csv('Password_chrome.csv')
+    print("Password is stored in 'Password_chrome.csv' file.")
 
 if __name__ == "__main__":
     main()
