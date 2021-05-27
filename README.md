@@ -2,7 +2,7 @@
 
 Being able to extract saved passwords in the most popular browser is a useful and handy task in forensics, as Chrome saves passwords locally in a sqlite3 database. However, this can be time consuming when doing it manually.
 
-Since Chrome saves a lot of your browsing data locally in your disk, In this tutorial, we will write Python code to extract saved passwords in Chrome on your Windows machine, we will also make a quick script to protect ourselves from such attack.
+Since Chrome saves a lot of your browsing data locally in your disk. So, here is Python script to extract saved passwords in Chrome on your Windows machine.
 
 We will install required libraries:
 
